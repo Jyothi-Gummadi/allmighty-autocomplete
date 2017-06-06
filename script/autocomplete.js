@@ -12,6 +12,7 @@ app.directive('autocomplete', function() {
       suggestions: '=data',
       onType: '=onType',
       onSelect: '=onSelect',
+      onBind: '=onBind',
       autocompleteRequired: '=',
       noAutoSort: '=noAutoSort'
     },
@@ -86,8 +87,11 @@ app.directive('autocomplete', function() {
         if(suggestion){
           $scope.searchParam = suggestion;
           $scope.searchFilter = suggestion;
-          if($scope.onSelect)
+          if($scope.onSelect){
             $scope.onSelect(suggestion);
+            if($scope.onBind)
+              $scope.onBind(suggestion.split('|')[0]);
+          }
         }
         watching = false;
         $scope.completing = false;
