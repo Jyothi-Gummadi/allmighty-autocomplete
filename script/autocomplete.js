@@ -84,6 +84,7 @@ app.directive('autocomplete', function() {
 
       // selecting a suggestion with RIGHT ARROW or ENTER
       $scope.select = function(suggestion){
+        if(!!suggestion || !!$scope.searchParam){
         if(suggestion){
           $scope.searchParam = suggestion;
           $scope.searchFilter = suggestion;
@@ -101,6 +102,7 @@ app.directive('autocomplete', function() {
            if($scope.onBind)
               $scope.onBind($scope.searchParam);
         }
+      }
         watching = false;
         $scope.completing = false;
         setTimeout(function(){watching = true;},1000);
