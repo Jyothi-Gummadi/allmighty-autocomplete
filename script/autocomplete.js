@@ -110,7 +110,6 @@ app.directive('autocomplete', function() {
 
     }],
     link: function(scope, element, attrs){
-        console.log(scope.noAutoSort)
 
       setTimeout(function() {
         scope.initLock = false;
