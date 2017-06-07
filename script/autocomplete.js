@@ -89,8 +89,12 @@ app.directive('autocomplete', function() {
           $scope.searchFilter = suggestion;
           if($scope.onSelect){
             $scope.onSelect(suggestion);
-            if($scope.onBind)
-              $scope.onBind(suggestion.split('|')[0]);
+            if ($scope.onBind) {
+                if(suggestion.indexOf('|') > 0)
+                    $scope.onBind(suggestion.split('|')[0]);
+                else
+                    $scope.onBind(suggestion);
+            }
           }
         }
         else{
