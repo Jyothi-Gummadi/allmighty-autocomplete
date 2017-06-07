@@ -93,6 +93,10 @@ app.directive('autocomplete', function() {
               $scope.onBind(suggestion.split('|')[0]);
           }
         }
+        else{
+           if($scope.onBind)
+              $scope.onBind($scope.searchParam);
+        }
         watching = false;
         $scope.completing = false;
         setTimeout(function(){watching = true;},1000);
